@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrossSell AI - Market Basket Analysis & Product Recommendation Engine</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="CrossSell AI is an E-commerce Cross-Selling Recommendation System powered by the Apriori Algorithm. Analyze product combinations and discover high-probability items frequently bought together.">
+    <meta name="keywords" content="Cross-Selling, Market Basket Analysis, Apriori Algorithm, E-commerce, Machine Learning, Association Rules, Support, Confidence, Lift">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo" id="nav-logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>CrossSell <span class="accent-text">AI</span></span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#about" class="nav-link" id="nav-link-about">About Apriori</a>
+                <a href="#recommend-tool" class="nav-link" id="nav-link-tool">Recommendation Engine</a>
+                <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <!-- Sun icon -->
+                    <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon icon -->
+                    <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="badge" id="hero-badge">Production Ready ML App</span>
+                    <h1 class="hero-title" id="hero-title">Predict What Customers Will Buy Together</h1>
+                    <p class="hero-subtitle" id="hero-subtitle">
+                        An intelligent, production-ready recommender system powered by Market Basket Analysis and the Apriori association algorithm. Instantly discover cross-selling opportunities.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#recommend-tool" class="btn btn-primary" id="hero-cta-btn">Try Recommender</a>
+                        <a href="#about" class="btn btn-secondary" id="hero-learn-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="glass-card visual-card">
+                        <div class="visual-header">
+                            <div class="window-dot red"></div>
+                            <div class="window-dot yellow"></div>
+                            <div class="window-dot green"></div>
+                            <span class="window-title">association_rules.pkl</span>
+                        </div>
+                        <div class="visual-content">
+                            <div class="rules-diagram">
+                                <div class="diagram-node node-main">
+                                    <div class="node-icon">💻</div>
+                                    <span>Laptop</span>
+                                </div>
+                                <div class="diagram-arrow">
+                                    <span class="arrow-text">Lift: 1.82</span>
+                                    <div class="arrow-line"></div>
+                                </div>
+                                <div class="diagram-node node-rec">
+                                    <div class="node-icon">🖱️</div>
+                                    <span>Mouse</span>
+                                    <span class="node-confidence">Conf: 70%</span>
+                                </div>
+                            </div>
+                            <div class="code-snippet-box">
+                                <span class="code-comment"># Apriori Association Metrics</span>
+                                <code class="code-line"><span class="code-key">Support:</span> <span class="code-val">0.21</span></code>
+                                <code class="code-line"><span class="code-key">Confidence:</span> <span class="code-val">0.70</span></code>
+                                <code class="code-line"><span class="code-key">Lift:</span> <span class="code-val">1.82</span></code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Understanding Association Rules & Apriori</h2>
+                    <p class="section-description">
+                        Market Basket Analysis runs on the Apriori algorithm to identify sets of products that frequently co-occur in historical transaction records.
+                    </p>
+                </div>
+                
+                <div class="metrics-grid">
+                    <!-- Support Card -->
+                    <div class="glass-card metric-card" id="about-card-support">
+                        <div class="metric-icon-wrap support-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="metric-title">Support</h3>
+                        <p class="metric-formula">Support(A) = Transactions containing A / Total Transactions</p>
+                        <p class="metric-desc">
+                            Measures the popularity of a product set. A support of 0.05 means the product appears in 5% of all transactions analyzed.
+                        </p>
+                    </div>
+
+                    <!-- Confidence Card -->
+                    <div class="glass-card metric-card" id="about-card-confidence">
+                        <div class="metric-icon-wrap confidence-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="metric-title">Confidence</h3>
+                        <p class="metric-formula">Confidence(A → B) = Support(A ∪ B) / Support(A)</p>
+                        <p class="metric-desc">
+                            Indicates how often the rule is correct. A confidence of 0.70 means 70% of customers who bought A also bought B.
+                        </p>
+                    </div>
+
+                    <!-- Lift Card -->
+                    <div class="glass-card metric-card" id="about-card-lift">
+                        <div class="metric-icon-wrap lift-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="metric-title">Lift</h3>
+                        <p class="metric-formula">Lift(A → B) = Confidence(A → B) / Support(B)</p>
+                        <p class="metric-desc">
+                            Measures the strength of the rule. A lift > 1 indicates that buying A significantly increases the likelihood of buying B compared to B's baseline popularity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendation Tool Section -->
+        <section class="tool-section" id="recommend-tool">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="badge badge-accent">Interactive Tool</span>
+                    <h2 class="section-title">Query the Recommendation Engine</h2>
+                    <p class="section-description">
+                        Select a product currently in a customer's shopping cart, and request real-time product bundle recommendations fetched directly from the trained ML model.
+                    </p>
+                </div>
+
+                <div class="tool-layout">
+                    <!-- Query Input Form -->
+                    <div class="glass-card form-card">
+                        <div class="form-group">
+                            <label for="product-select" class="form-label">Select Cart Product:</label>
+                            <div class="select-wrapper">
+                                <select id="product-select" class="form-select">
+                                    <option value="" disabled selected>-- Select a Product --</option>
+                                    <optgroup label="Core Devices (Bundling Rules)">
+                                        <option value="Laptop">Laptop (Tech Bundle)</option>
+                                        <option value="Smartphone">Smartphone (Mobile Bundle)</option>
+                                        <option value="DSLR">DSLR Camera (Photo Bundle)</option>
+                                    </optgroup>
+                                    <optgroup label="Accessories & Items">
+                                        <option value="Mouse">Mouse</option>
+                                        <option value="Laptop Bag">Laptop Bag</option>
+                                        <option value="Keyboard">Keyboard</option>
+                                        <option value="Charger">Charger</option>
+                                        <option value="Screen Protector">Screen Protector</option>
+                                        <option value="Earbuds">Earbuds</option>
+                                        <option value="SD Card">SD Card</option>
+                                        <option value="Tripod">Tripod</option>
+                                        <option value="Camera Bag">Camera Bag</option>
+                                    </optgroup>
+                                    <optgroup label="Other Catalog Products">
+                                        <option value="Monitor">Monitor</option>
+                                        <option value="USB Hub">USB Hub</option>
+                                        <option value="HDMI Cable">HDMI Cable</option>
+                                        <option value="Printer">Printer</option>
+                                        <option value="Tablet">Tablet</option>
+                                        <option value="Gaming Mouse">Gaming Mouse</option>
+                                        <option value="Mechanical Keyboard">Mechanical Keyboard</option>
+                                        <option value="Power Bank">Power Bank</option>
+                                        <option value="Smart Watch">Smart Watch</option>
+                                        <option value="Router">Router</option>
+                                        <option value="SSD">SSD</option>
+                                        <option value="Headphones">Headphones</option>
+                                        <option value="Microphone">Microphone</option>
+                                        <option value="Ring Light">Ring Light</option>
+                                        <option value="Webcam">Webcam</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button id="get-recommendations-btn" class="btn btn-primary btn-block">
+                            <span>Get Recommendations</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                        
+                        <div class="api-status-box" id="api-status-box">
+                            <div class="status-indicator" id="status-indicator"></div>
+                            <span class="status-text" id="status-text">Backend Status: Connecting...</span>
+                        </div>
+                    </div>
+
+                    <!-- Results Display Container -->
+                    <div class="results-container" id="results-section">
+                        <!-- Welcome / Idle State -->
+                        <div class="results-state state-idle" id="state-idle">
+                            <div class="state-icon">🛍️</div>
+                            <h3>Awaiting Selection</h3>
+                            <p>Choose a product from the list and hit "Get Recommendations" to analyze co-purchasing probabilities.</p>
+                        </div>
+
+                        <!-- Loading Shimmer State -->
+                        <div class="results-state state-loading hidden" id="state-loading">
+                            <div class="shimmer-card"></div>
+                            <div class="shimmer-card"></div>
+                            <div class="shimmer-card"></div>
+                        </div>
+
+                        <!-- Error State -->
+                        <div class="results-state state-error hidden" id="state-error">
+                            <div class="state-icon error-icon">⚠️</div>
+                            <h3 id="error-title">Recommendation Failed</h3>
+                            <p id="error-message">Could not communicate with the Flask API server. Please make sure the backend is running.</p>
+                        </div>
+
+                        <!-- Empty Results State -->
+                        <div class="results-state state-empty hidden" id="state-empty">
+                            <div class="state-icon empty-icon">🔍</div>
+                            <h3>No High-Confidence Bundles</h3>
+                            <p>The Apriori model has not identified any recommendation rules meeting a confidence >= 60% and lift >= 1.2 for this item.</p>
+                        </div>
+
+                        <!-- Loaded Success State -->
+                        <div class="state-success hidden" id="state-success">
+                            <div class="success-header">
+                                <h3>Frequently Bought With: <span class="highlight" id="queried-product-label">Laptop</span></h3>
+                                <span class="badge badge-success" id="results-count-badge">3 Recommendations</span>
+                            </div>
+                            
+                            <div class="recommendations-grid" id="recommendations-grid">
+                                <!-- Dynamic recommendation cards injected here by script.js -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <span class="footer-logo">CrossSell <span class="accent-text">AI</span></span>
+                <p class="footer-desc">Market Basket Analysis recommendation engine built with Flask, Pandas, and Mlxtend. Configured for high performance and deployed serverless.</p>
+            </div>
+            <div class="footer-right">
+                <span class="tech-stack-title">Tech Stack</span>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python 3</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">Mlxtend</span>
+                    <span class="tech-tag">Vanilla JS</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">Vercel</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CrossSell AI. All Rights Reserved. Built for high conversion optimization.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
