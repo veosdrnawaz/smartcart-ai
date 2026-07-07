@@ -83,6 +83,11 @@ body.dark-theme {
     padding: 0;
 }
 
+/* Utility: Hidden — used by script.js to toggle sandbox result states */
+.hidden {
+    display: none !important;
+}
+
 html {
     scroll-behavior: smooth;
 }
