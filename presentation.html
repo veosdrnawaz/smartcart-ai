@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrossSell AI - Project Presentation</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #6366f1;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --radius-md: 16px;
+            --font-primary: 'Inter', sans-serif;
+            --font-display: 'Outfit', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Presentation Container */
+        .presentation-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Slide Shell */
+        .slide {
+            position: absolute;
+            width: 100%;
+            max-width: 1000px;
+            min-height: 550px;
+            padding: 48px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(16px);
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+            pointer-events: none;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+            z-index: 10;
+        }
+
+        /* Slide Content Parts */
+        .slide-header {
+            margin-bottom: 24px;
+        }
+
+        .slide-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 50px;
+            background: rgba(99, 102, 241, 0.15);
+            color: #818cf8;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            margin-bottom: 12px;
+        }
+
+        .slide-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide-body {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide-footer {
+            margin-top: 24px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Layout Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            width: 100%;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* Slide Content Components */
+        .slide-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .list-items {
+            list-style: none;
+        }
+
+        .list-items li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+        }
+
+        .list-items li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #818cf8;
+            font-weight: bold;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .feature-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Code snippets */
+        pre {
+            background: #090d16;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow-x: auto;
+        }
+
+        /* Controls Panel */
+        .controls-panel {
+            padding: 24px;
+            background: rgba(15, 23, 42, 0.6);
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .progress-bar-container {
+            width: 300px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .slide-counter {
+            font-family: var(--font-display);
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        /* Slide 1 Spec (Title) */
+        .slide-title-large {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .slide-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .author-box {
+            display: flex;
+            gap: 24px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .author-box span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .diagram-box {
+            background: #0f172a;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            padding: 16px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #38bdf8;
+            white-space: pre;
+            line-height: 1.4;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Presentation -->
+    <main class="presentation-container">
+        
+        <!-- Slide 1: Title -->
+        <section class="slide active" id="slide-1">
+            <div class="slide-header">
+                <span class="slide-badge">Machine Learning Application</span>
+            </div>
+            <div class="slide-body" style="flex-direction: column; align-items: flex-start; justify-content: center;">
+                <h1 class="slide-title-large">CrossSell AI</h1>
+                <p class="slide-subtitle">E-commerce Cross-Selling Recommendation System using Apriori Algorithm</p>
+                <div class="author-box">
+                    <span><strong>Stack:</strong> Flask, Pandas, Mlxtend, HTML5/CSS3, JS</span>
+                    <span><strong>Model:</strong> Association Rules Mining</span>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Use Left/Right arrows or spacebar to navigate</span>
+                <span class="slide-counter">Slide 1 of 8</span>
+            </div>
+        </section>
+
+        <!-- Slide 2: The Challenge -->
+        <section class="slide" id="slide-2">
+            <div class="slide-header">
+                <span class="slide-badge">Problem Statement</span>
+                <h2 class="slide-title">The Challenge in E-Commerce</h2>
+            </div>
+            <div class="slide-body">
+                <div class="grid-2">
+                    <div>
+                        <p class="slide-text">With massive product catalogs, customers struggle to find related accessories, resulting in lower transaction values.</p>
+                        <ul class="list-items">
+                            <li>Manual bundling strategies are slow and bias-prone.</li>
+                            <li>Standard item pairing systems require massive computing structures.</li>
+                            <li>Real-time calculations can add page load latency, driving away users.</li>
+                        </ul>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <div class="feature-card" style="border-left: 4px solid var(--accent); padding: 32px;">
+                            <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 12px;">The Goal</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.6;">Automate cross-selling by mining database transaction patterns to instantly recommend products that customers are statistically most likely to buy together.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>E-Commerce Optimization</span>
+                <span class="slide-counter">Slide 2 of 8</span>
+            </div>
+        </section>
+
+        <!-- Slide 3: The Solution (Apriori) -->
+        <section class="slide" id="slide-3">
+            <div class="slide-header">
+                <span class="slide-badge">Core Algorithm</span>
+                <h2 class="slide-title">Market Basket Analysis & Apriori</h2>
+            </div>
+            <div class="slide-body">
+                <div class="grid-2">
+                    <div>
+                        <p class="slide-text"><strong>Market Basket Analysis (MBA)</strong> explores association rules that show how strongly items are connected in a transaction database.</p>
+                        <p class="slide-text">The <strong>Apriori Algorithm</strong> is an unsupervised learning method that isolates sets of items that appear together frequently by weeding out rare combinations.</p>
+                        <ul class="list-items">
+                            <li>Scans transactional datasets.</li>
+                            <li>Builds confidence metrics for pairs and bundles.</li>
+                            <li>Extracts mathematical rules to drive checkout suggestions.</li>
+                        </ul>
+                    </div>
+                    <div class="diagram-box">
++-------------------------+
+|  All Shopping Carts     |
++-------------------------+
+             |
+             | Filter min_support >= 5%
+             v
++-------------------------+
+| Frequent Product Sets   |
++-------------------------+
+             |
+             | Extract Rules (Lift >= 1.2)
+             v
++-------------------------+
+|  Association Rules      |
+|  (Saved in model.pkl)   |
++-------------------------+</div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Unsupervised Association Rules Mining</span>
+                <span class="slide-counter">Slide 3 of 8</span>
+            </div>
+        </section>
+
+        <!-- Slide 4: Key Metrics -->
+        <section class="slide" id="slide-4">
+            <div class="slide-header">
+                <span class="slide-badge">Mathematical Foundations</span>
+                <h2 class="slide-title">The Three pillars of Association Rules</h2>
+            </div>
+            <div class="slide-body">
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <div style="font-size: 1.5rem; margin-bottom: 8px;">📊</div>
+                        <h4>1. Support</h4>
+                        <p style="font-family: monospace; font-size: 0.8rem; color:#818cf8; margin-bottom: 8px;">Freq(A, B) / N</p>
+                        <p>Measures how frequently the combination of items occurs. It controls the baseline popularity of a rule.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div style="font-size: 1.5rem; margin-bottom: 8px;">📈</div>
+                        <h4>2. Confidence</h4>
+                        <p style="font-family: monospace; font-size: 0.8rem; color:#818cf8; margin-bottom: 8px;">Support(A, B) / Support(A)</p>
+                        <p>Measures the conditional probability of purchase. If a customer buys A, what is the chance they buy B?</p>
+                    </div>
+                    <div class="feature-card">
+                        <div style="font-size: 1.5rem; margin-bottom: 8px;">🚀</div>
+                        <h4>3. Lift</h4>
+                        <p style="font-family: monospace; font-size: 0.8rem; color:#818cf8; margin-bottom: 8px;">Confidence(A→B) / Support(B)</p>
+                        <p>Determines rule strength. A lift > 1 means buying A boosts the rate of buying B compared to normal behavior.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Evaluation Metrics</span>
+                <span class="slide-counter">Slide 4 of 8</span>
+            </div>
+        </section>
+
+        <!-- Slide 5: Data Generation & Bundles -->
+        <section class="slide" id="slide-5">
+            <div class="slide-header">
+                <span class="slide-badge">Data Engineering</span>
+                <h2 class="slide-title">Conditional Probability Dataset</h2>
+            </div>
+            <div class="slide-body">
+                <div class="grid-2">
+                    <div>
+                        <p class="slide-text">The system generates exactly <strong>500 realistic shopping carts</strong> containing product categories mapped with specific bundling behaviors:</p>
+                        <ul class="list-items">
+                            <li><strong>Laptop Rule</strong>: Mouse (70%), Laptop Bag (60%), Keyboard (40%).</li>
+                            <li><strong>Smartphone Rule</strong>: Charger (85%), Screen Protector (80%), Earbuds (50%).</li>
+                            <li><strong>DSLR Camera Rule</strong>: SD Card (75%), Tripod (65%), Camera Bag (55%).</li>
+                            <li>Adds 15 additional catalog items as transaction noise.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <pre><code># Data Generation (generate_data.py)
+for _ in range(150):
+    basket = ["Laptop"]
+    if random.random() < 0.70:
+        basket.append("Mouse")
+    if random.random() < 0.60:
+        basket.append("Laptop Bag")
+    if random.random() < 0.40:
+        basket.append("Keyboard")
+    # ... adds noise ...</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Synthetic Market Basket Database</span>
+                <span class="slide-counter">Slide 5 of 8</span>
+            </div>
+        </section>
+
+        <!-- Slide 6: Backend & REST API -->
+        <section class="slide" id="slide-6">
+            <div class="slide-header">
+                <span class="slide-badge">API Architecture</span>
+                <h2 class="slide-title">Flask Serverless Backend</h2>
+            </div>
+            <div class="slide-body">
+                <div class="grid-2">
+                    <div>
+                        <p class="slide-text">The backend is built with Python and Flask. It separates modeling from execution to guarantee immediate load times.</p>
+                        <ul class="list-items">
+                            <li><strong>Offline Training</strong>: Model is trained once, and association rules are serialized to <code>model.pkl</code>.</li>
+                            <li><strong>Inference speed</strong>: At runtime, the API loads <code>model.pkl</code> to run lookups in <strong>O(1) time</strong> instead of retraining.</li>
+                            <li><strong>Endpoints</strong>: Supports health diagnostics at <code>/health</code> and queries at <code>POST /recommend</code>.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <pre><code># app.py
+@app.route('/recommend', methods=['POST'])
+def recommend():
+    data = request.get_json(silent=True)
+    product = data.get("product")
+    
+    # 1. Validate inputs
+    # 2. Query rules from loaded model.pkl
+    # 3. Sort by Lift -> Confidence -> Support
+    return jsonify({
+        "product": product,
+        "recommendations": recommendations
+    })</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>High Performance Inference API</span>
+                <span class="slide-counter">Slide 6 of 8</span>
+            </div>
+        </section>
+
+        <!-- Slide 7: Frontend Design System -->
+        <section class="slide" id="slide-7">
+            <div class="slide-header">
+                <span class="slide-badge">UX Design</span>
+                <h2 class="slide-title">Glassmorphic Frontend</h2>
+            </div>
+            <div class="slide-body">
+                <div class="grid-2">
+                    <div>
+                        <p class="slide-text">A responsive web landing page that leverages pure HTML5, Vanilla CSS3, and Vanilla JavaScript with no bulky frameworks.</p>
+                        <ul class="list-items">
+                            <li><strong>Aesthetics</strong>: Custom font stacks, dark/light theme toggle, glassmorphic cards, and hover transitions.</li>
+                            <li><strong>Micro-animations</strong>: Shimmer loading skeletons during API calls, progress bar indicators for confidence.</li>
+                            <li><strong>Resiliency</strong>: Graceful error displays for invalid items, empty states, or lost connections.</li>
+                        </ul>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                        <div class="feature-card" style="border-left:4px solid #10b981;">
+                            <h4 style="color:#10b981;">Light & Dark Modes</h4>
+                            <p>Stored locally in localStorage. Adapts directly to the OS system settings by default.</p>
+                        </div>
+                        <div class="feature-card" style="border-left:4px solid #a855f7;">
+                            <h4>Client-Side Routing</h4>
+                            <p>Responsive design scales cleanly across desktop monitors, tablets, and smartphones.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Responsive Vanilla Frontend System</span>
+                <span class="slide-counter">Slide 7 of 8</span>
+            </div>
+        </section>
+
+        <!-- Slide 8: Summary & Production Readiness -->
+        <section class="slide" id="slide-8">
+            <div class="slide-header">
+                <span class="slide-badge">Deployment & Summary</span>
+                <h2 class="slide-title">Production & Vercel Ready</h2>
+            </div>
+            <div class="slide-body">
+                <div class="grid-2">
+                    <div>
+                        <p class="slide-text"><strong>CrossSell AI</strong> is fully deployable to serverless providers like Vercel with zero modifications.</p>
+                        <ul class="list-items">
+                            <li><strong>Vercel Routing</strong>: Configured inside <code>vercel.json</code> to direct Flask routes and serve HTML/CSS/JS files.</li>
+                            <li><strong>No TODOs</strong>: Code contains complete exception handling, sanitizations, and health polls.</li>
+                            <li><strong>Future Scale</strong>: Easy expansion to multi-product baskets and SQL database storage.</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card" style="display:flex; flex-direction:column; justify-content:center; gap:8px;">
+                        <h4 style="font-size:1.25rem;">Resume-Ready Points</h4>
+                        <p style="font-size:0.95rem; margin-bottom:8px;">✦ Configured pickled model files achieving O(1) time complexity.</p>
+                        <p style="font-size:0.95rem; margin-bottom:8px;">✦ Developed modular PEP8 Python code and clean Vanilla JS.</p>
+                        <p style="font-size:0.95rem;">✦ Configured serverless static routing for web architectures.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>End of Presentation</span>
+                <span class="slide-counter">Slide 8 of 8</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Controls Panel -->
+    <footer class="controls-panel">
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-btn" id="prev-btn">Previous</button>
+            <button class="nav-btn" id="next-btn">Next</button>
+        </div>
+    </footer>
+
+    <!-- Script for slide switching -->
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBarFill = document.getElementById('progress-bar-fill');
+        
+        let currentSlide = 0;
+
+        const updatePresentation = () => {
+            // Remove active classes
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            // Set current active
+            slides[currentSlide].classList.add('active');
+            
+            // Update progress bar
+            const progress = ((currentSlide + 1) / slides.length) * 100;
+            progressBarFill.style.width = `${progress}%`;
+            
+            // Toggle button states
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.innerHTML = currentSlide === slides.length - 1 ? 'Restart' : 'Next';
+        };
+
+        const nextSlide = () => {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+            } else {
+                currentSlide = 0; // Restart
+            }
+            updatePresentation();
+        };
+
+        const prevSlide = () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updatePresentation();
+            }
+        };
+
+        // Navigation listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Keyboard listeners
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+
+        // Init
+        updatePresentation();
+    </script>
+</body>
+</html>
