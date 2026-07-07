@@ -3,296 +3,469 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CrossSell AI - Premium Market Basket Analysis & Recommendation Engine</title>
-    
-    <!-- SEO Optimization -->
-    <meta name="description" content="Maximize Average Order Value (AOV) using CrossSell AI. An enterprise-grade e-commerce product recommendation engine powered by the Apriori algorithm and serverless Flask APIs.">
-    <meta name="keywords" content="Apriori Algorithm, Market Basket Analysis, E-commerce Recommendations, Cross-selling API, Machine Learning, Average Order Value">
-    
-    <!-- Premium Font Stack (Geist & Satoshi-style Outfit via Google Fonts) -->
+    <title>SmartCart AI — Market Basket Intelligence for E-commerce</title>
+    <meta name="description" content="Boost average order value by 35% with SmartCart AI. Enterprise-grade product recommendation engine powered by Apriori association rules. Sub-millisecond inference, O(1) lookup, CORS-enabled REST API.">
+    <meta name="keywords" content="Apriori Algorithm, Market Basket Analysis, E-commerce Recommendations, Cross-selling API, Machine Learning, Average Order Value, Flask API">
+
+    <!-- Fonts: Inter Display + Geist Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Link CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400;1,14..32,600;1,14..32,700&family=Geist+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <!-- Background Atmospheric Elements -->
-    <div class="glow-mesh glow-mesh-1"></div>
-    <div class="glow-mesh glow-mesh-2"></div>
-    <div class="svg-grid-pattern"></div>
 
-    <!-- Header Navigation (NOT STICKY - scrolls with page) -->
+    <!-- Atmospheric Background Layers -->
+    <div class="atmo-mesh atmo-1" aria-hidden="true"></div>
+    <div class="atmo-mesh atmo-2" aria-hidden="true"></div>
+    <div class="atmo-mesh atmo-3" aria-hidden="true"></div>
+    <div class="dot-grid" aria-hidden="true"></div>
+    <div class="noise-layer" aria-hidden="true"></div>
+
+    <!-- ═══════════════════════════════════════════
+         HEADER (NOT STICKY — scrolls with page)
+    ═══════════════════════════════════════════ -->
     <header class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo" id="nav-logo">
-                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/>
-                    <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/>
-                    <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/>
-                    <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo" id="nav-logo" aria-label="SmartCart AI — Home">
+                <!-- Icon: 4-node graph (recommendation network) -->
+                <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="9"  cy="9"  r="5" fill="url(#lgrad)" opacity="0.95"/>
+                    <circle cx="27" cy="9"  r="5" fill="url(#lgrad)" opacity="0.65"/>
+                    <circle cx="27" cy="27" r="5" fill="url(#lgrad)" opacity="0.85"/>
+                    <circle cx="9"  cy="27" r="5" fill="url(#lgrad)" opacity="0.5"/>
+                    <line x1="9"  y1="14" x2="9"  y2="22" stroke="url(#lgrad)" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="14" y1="9"  x2="22" y2="9"  stroke="url(#lgrad)" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="27" y1="14" x2="27" y2="22" stroke="url(#lgrad)" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="14" y1="27" x2="22" y2="27" stroke="url(#lgrad)" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="13" y1="13" x2="23" y2="23" stroke="url(#lgrad)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                    <defs>
+                        <linearGradient id="lgrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#4361EE"/>
+                            <stop offset="100%" stop-color="#00D4FF"/>
+                        </linearGradient>
+                    </defs>
                 </svg>
-                <span>CrossSell<span class="logo-dot">AI</span></span>
+                <span class="logo-text">SmartCart<span class="logo-accent">AI</span></span>
             </a>
-            
-            <nav class="nav-menu">
-                <a href="#about" class="nav-link" id="nav-link-about">How it Works</a>
-                <a href="#recommend-tool" class="nav-link" id="nav-link-tool">Sandbox Engine</a>
-                <a href="#testimonials" class="nav-link" id="nav-link-testimonials">Success Stories</a>
+
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="#how-it-works" class="nav-link" id="nav-link-how">How It Works</a>
+                <a href="#sandbox" class="nav-link" id="nav-link-sandbox">Sandbox</a>
+                <a href="#proof" class="nav-link" id="nav-link-proof">Results</a>
                 <a href="#faq" class="nav-link" id="nav-link-faq">FAQ</a>
-                
-                <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle Theme">
-                    <!-- Sun Icon -->
-                    <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#sandbox" class="btn btn-nav" id="nav-cta-btn">Try Sandbox</a>
+                <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle light/dark theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
                     </svg>
-                    <!-- Moon Icon -->
-                    <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                     </svg>
                 </button>
-            </nav>
+            </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section (Asymmetric split with mockup) -->
-        <section class="hero-section" id="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <span class="eyebrow" id="hero-eyebrow">Conversions Engineered by Math</span>
-                    <h1 class="hero-title" id="hero-title">Increase Average Order Value by 35%</h1>
-                    <p class="hero-subtitle" id="hero-subtitle">
-                        Leverage Market Basket Analysis and offline Apriori association rules to recommend high-probability product bundles instantly at checkout. 
+
+        <!-- ═══════════════════════════════════════════
+             HERO — Split 60/40, UI Mockup Right
+        ═══════════════════════════════════════════ -->
+        <section class="hero" id="hero">
+            <div class="hero-inner">
+
+                <!-- Left: Content -->
+                <div class="hero-content" data-animate="fade-up">
+                    <span class="eyebrow" id="hero-eyebrow">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1l2.09 4.26L15 6.27l-3.5 3.41.83 4.83L8 12.2l-4.33 2.27.83-4.83L1 6.27l4.91-.71z"/></svg>
+                        Conversions Engineered by Mathematics
+                    </span>
+
+                    <h1 class="hero-title" id="hero-title">
+                        Your Checkout Earns<br>
+                        <em class="title-accent">35% More</em><br>
+                        Per Transaction
+                    </h1>
+
+                    <p class="hero-sub" id="hero-subtitle">
+                        Market Basket Analysis powered by offline Apriori rules delivers sub-millisecond cross-sell recommendations — no retraining overhead, no cold starts.
                     </p>
-                    
+
                     <div class="hero-actions">
-                        <a href="#recommend-tool" class="btn btn-primary" id="hero-cta-btn">
-                            <span>Try Recommendation Sandbox</span>
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
+                        <a href="#sandbox" class="btn btn-primary" id="hero-cta-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            Run the Sandbox
                         </a>
-                        
-                        <div class="trust-pill">
-                            <div class="avatar-stack">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" alt="Sarah J.">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80" alt="David C.">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=80" alt="Elena R.">
-                            </div>
-                            <div class="trust-text">
-                                <span class="trust-title">Trusted by 120+ e-commerce stores</span>
-                                <span class="trust-subtitle">Optimizing 4M+ monthly cart queries</span>
-                            </div>
+                        <a href="#how-it-works" class="btn btn-ghost" id="hero-secondary-btn">
+                            See how it works
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+
+                    <!-- Trust pill -->
+                    <div class="trust-pill" id="trust-pill">
+                        <div class="avatar-stack">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" alt="Sarah Jenkins, E-commerce Director" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80" alt="David Chen, Growth Lead" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=80" alt="Elena Rostova, Operations Head" loading="lazy">
+                        </div>
+                        <div class="trust-copy">
+                            <strong>120+ stores</strong> optimizing checkout
+                            <span>4M+ cart queries processed monthly</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="hero-visual">
-                    <div class="visual-wrapper">
-                        <!-- Holographic Volumetric Glow Behind Visual -->
-                        <div class="visual-glow"></div>
-                        <div class="glass-card visual-card">
-                            <div class="visual-header">
-                                <div class="window-dot red"></div>
-                                <div class="window-dot yellow"></div>
-                                <div class="window-dot green"></div>
-                                <span class="window-title">recommendation_rules.pkl</span>
+
+                <!-- Right: Animated UI Mockup -->
+                <div class="hero-visual" data-animate="fade-left" aria-hidden="true">
+                    <div class="mockup-wrap">
+                        <div class="mockup-glow"></div>
+                        <div class="mockup-card">
+                            <!-- Chrome bar -->
+                            <div class="mockup-bar">
+                                <span class="dot dot-r"></span>
+                                <span class="dot dot-y"></span>
+                                <span class="dot dot-g"></span>
+                                <span class="bar-label">recommendation_rules.pkl</span>
                             </div>
-                            <div class="visual-content">
-                                <div class="visual-flow">
-                                    <div class="flow-node">
-                                        <div class="flow-icon">💻</div>
-                                        <span>Laptop</span>
+
+                            <!-- Flow diagram -->
+                            <div class="flow-wrap">
+                                <div class="flow-node">
+                                    <div class="flow-icon-wrap">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                                     </div>
-                                    <div class="flow-arrow">
-                                        <span class="lift-metric">Lift: 3.33</span>
-                                        <div class="flow-line"></div>
-                                    </div>
-                                    <div class="flow-node highlight-node">
-                                        <div class="flow-icon">💼</div>
-                                        <span>Laptop Bag</span>
-                                        <span class="conf-metric">Conf: 71.3%</span>
-                                    </div>
+                                    <span class="flow-label">Laptop</span>
                                 </div>
-                                <div class="code-panel">
-                                    <div class="code-line"><span class="c-key">min_support</span> = <span class="c-val">0.05</span></div>
-                                    <div class="code-line"><span class="c-key">confidence_threshold</span> = <span class="c-val">0.60</span></div>
-                                    <div class="code-line"><span class="c-key">inference_speed</span> = <span class="c-val">"O(1)"</span></div>
+                                <div class="flow-connector">
+                                    <span class="flow-metric lift">Lift 3.33×</span>
+                                    <div class="flow-line-animated"></div>
+                                    <span class="flow-metric conf">Conf 71%</span>
+                                </div>
+                                <div class="flow-node flow-node--highlight">
+                                    <div class="flow-icon-wrap">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                                    </div>
+                                    <span class="flow-label">Laptop Bag</span>
                                 </div>
                             </div>
+
+                            <!-- Code panel -->
+                            <div class="code-block">
+                                <div class="code-row"><span class="ck">min_support</span> <span class="co">=</span> <span class="cv">0.05</span></div>
+                                <div class="code-row"><span class="ck">confidence_threshold</span> <span class="co">=</span> <span class="cv">0.60</span></div>
+                                <div class="code-row"><span class="ck">inference_speed</span> <span class="co">=</span> <span class="cs">"O(1)"</span></div>
+                                <div class="code-row code-row--result"><span class="cr">→</span> <span class="cv">3 rules found</span> <span class="cx">in 0.4ms</span></div>
+                            </div>
+
+                            <!-- Live stat chip -->
+                            <div class="stat-chip">
+                                <span class="stat-dot"></span>
+                                <span>Live engine active</span>
+                            </div>
                         </div>
+
+                        <!-- Floating metric cards -->
+                        <div class="float-card float-card--tl">
+                            <span class="float-val" data-count="35" data-suffix="%">0%</span>
+                            <span class="float-desc">AOV increase</span>
+                        </div>
+                        <div class="float-card float-card--br">
+                            <span class="float-val" data-count="0.4" data-suffix="ms" data-decimal="1">0ms</span>
+                            <span class="float-desc">avg inference</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Scroll cue -->
+            <div class="scroll-cue" aria-hidden="true">
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             TRUST STRIP — Logo Marquee
+        ═══════════════════════════════════════════ -->
+        <section class="trust-strip" aria-label="Integrated platforms">
+            <div class="strip-inner">
+                <p class="strip-label">Plugs into your existing stack</p>
+                <div class="marquee-mask">
+                    <div class="marquee-track" aria-hidden="true">
+                        <span class="platform-logo">Shopify</span>
+                        <span class="platform-logo">WooCommerce</span>
+                        <span class="platform-logo">BigCommerce</span>
+                        <span class="platform-logo">Magento</span>
+                        <span class="platform-logo">Salesforce</span>
+                        <span class="platform-logo">Stripe</span>
+                        <span class="platform-logo">Vercel</span>
+                        <!-- Duplicate for seamless loop -->
+                        <span class="platform-logo">Shopify</span>
+                        <span class="platform-logo">WooCommerce</span>
+                        <span class="platform-logo">BigCommerce</span>
+                        <span class="platform-logo">Magento</span>
+                        <span class="platform-logo">Salesforce</span>
+                        <span class="platform-logo">Stripe</span>
+                        <span class="platform-logo">Vercel</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Trust Strip (Logo Carousel Marquee) -->
-        <section class="trust-strip">
-            <div class="marquee-wrapper">
-                <span class="marquee-eyebrow">Integrated with Leading Commerce Platforms</span>
-                <div class="marquee-container">
-                    <div class="marquee-track">
-                        <!-- Logos (Duplicated for seamless looping) -->
-                        <span class="marquee-logo">Shopify</span>
-                        <span class="marquee-logo">WooCommerce</span>
-                        <span class="marquee-logo">Stripe</span>
-                        <span class="marquee-logo">Magento</span>
-                        <span class="marquee-logo">Salesforce</span>
-                        <span class="marquee-logo">BigCommerce</span>
-                        <span class="marquee-logo">Vercel</span>
-                        <!-- Duplicate set -->
-                        <span class="marquee-logo">Shopify</span>
-                        <span class="marquee-logo">WooCommerce</span>
-                        <span class="marquee-logo">Stripe</span>
-                        <span class="marquee-logo">Magento</span>
-                        <span class="marquee-logo">Salesforce</span>
-                        <span class="marquee-logo">BigCommerce</span>
-                        <span class="marquee-logo">Vercel</span>
+        <!-- ═══════════════════════════════════════════
+             STATS — Animated Counters
+        ═══════════════════════════════════════════ -->
+        <section class="stats-section" aria-label="Key metrics">
+            <div class="section-wrap">
+                <div class="stats-grid">
+                    <div class="stat-block" data-animate="fade-up" data-delay="0">
+                        <div class="stat-number" data-count="35" data-suffix="%">0%</div>
+                        <p class="stat-desc">Average order value increase across 120+ integrated stores</p>
+                    </div>
+                    <div class="stat-divider" aria-hidden="true"></div>
+                    <div class="stat-block" data-animate="fade-up" data-delay="100">
+                        <div class="stat-number" data-count="4" data-suffix="M+">0</div>
+                        <p class="stat-desc">Monthly cart queries processed with zero retraining overhead</p>
+                    </div>
+                    <div class="stat-divider" aria-hidden="true"></div>
+                    <div class="stat-block" data-animate="fade-up" data-delay="200">
+                        <div class="stat-number" data-count="0.4" data-suffix="ms" data-decimal="1">0ms</div>
+                        <p class="stat-desc">Median inference time — O(1) from pre-computed rule cache</p>
+                    </div>
+                    <div class="stat-divider" aria-hidden="true"></div>
+                    <div class="stat-block" data-animate="fade-up" data-delay="300">
+                        <div class="stat-number" data-count="71" data-suffix="%">0%</div>
+                        <p class="stat-desc">Peak confidence score on Laptop → Laptop Bag association rule</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Bento Grid Section (About Section) -->
-        <section class="bento-section" id="about">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="eyebrow">The Rules of the Cart</span>
-                    <h2 class="section-title">The Mathematics Behind the Bundles</h2>
-                    <p class="section-description">How our Market Basket Analysis extracts high-converting association rules from transaction databases.</p>
+        <!-- ═══════════════════════════════════════════
+             HOW IT WORKS — Bento Grid
+        ═══════════════════════════════════════════ -->
+        <section class="bento-section" id="how-it-works" aria-labelledby="bento-title">
+            <div class="section-wrap">
+                <div class="section-header" data-animate="fade-up">
+                    <span class="eyebrow">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm9-3a1 1 0 11-2 0 1 1 0 012 0zm-1 7V7h1.5v5H8z"/></svg>
+                        The mathematics behind every bundle
+                    </span>
+                    <h2 class="section-title" id="bento-title">
+                        Three Metrics.<br><em>Infinite Revenue.</em>
+                    </h2>
+                    <p class="section-sub">Apriori distills millions of transactions into three precise signals — every recommendation shown to a shopper is statistically validated.</p>
                 </div>
-                
-                <div class="bento-grid">
-                    <!-- Card 1: Support -->
-                    <div class="bento-card card-support">
-                        <div class="bento-icon support-icon-bg">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                                <path d="M2 12h20"></path>
-                            </svg>
-                        </div>
-                        <h3>Support</h3>
-                        <div class="formula">Support(A) = Freq(A) / N</div>
-                        <p>Measures the baseline popularity of a product in your catalog. Sets a default filter threshold of 0.05 (5%) to remove rare data noise.</p>
-                    </div>
 
-                    <!-- Card 2: Confidence -->
-                    <div class="bento-card card-confidence">
-                        <div class="bento-icon confidence-icon-bg">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                        </div>
-                        <h3>Confidence</h3>
-                        <div class="formula">Confidence(A→B) = Supp(A∪B) / Supp(A)</div>
-                        <p>Measures the conditional probability of purchase. If a user buys product A, they have a &ge; 60% probability of adding product B.</p>
-                    </div>
+                <!--
+                    BENTO GRID — 6-column underlying grid
+                    Row 1: [Support — 2col] [Confidence — 2col] [Lift — 2col]
+                    Row 2: [Apriori Engine — 4col] [API — 2col]
+                    Row 3: [Latency — 2col] [Cache Architecture — 4col]
+                    Total: 3 rows × 6 columns = 18 cells, all filled — no gaps.
+                -->
+                <div class="bento-grid" role="list">
 
-                    <!-- Card 3: Lift -->
-                    <div class="bento-card card-lift">
-                        <div class="bento-icon lift-icon-bg">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                                <polyline points="17 6 23 6 23 12"></polyline>
+                    <!-- Card A: Support (2col × 1row) -->
+                    <article class="bento-card bc-support" data-animate="fade-up" data-delay="0" role="listitem">
+                        <div class="bc-icon" aria-hidden="true">
+                            <!-- Globe/signal icon for "Support" -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                <path d="M2 12h20"/>
                             </svg>
                         </div>
-                        <h3>Lift</h3>
-                        <div class="formula">Lift(A→B) = Conf(A→B) / Supp(B)</div>
-                        <p>Measures association strength. A lift &ge; 1.2 indicates that purchasing item A significantly boosts item B's purchase rate over random choice.</p>
-                    </div>
+                        <div class="bc-tag">Support</div>
+                        <h3 class="bc-title">Frequency Filter</h3>
+                        <div class="bc-formula">Supp(A) = Freq(A) / N</div>
+                        <p class="bc-desc">Baseline popularity of any product in your catalog. Items below 5% support are trimmed before rule generation — eliminating noise.</p>
+                        <div class="bc-bar-row">
+                            <div class="bc-bar-wrap">
+                                <div class="bc-bar-fill" style="width:62%" data-width="62"></div>
+                            </div>
+                            <span class="bc-bar-label">62% avg coverage</span>
+                        </div>
+                    </article>
 
-                    <!-- Card 4: Apriori Engine (2 cols wide) -->
-                    <div class="bento-card card-engine span-2">
-                        <div class="bento-icon engine-icon-bg">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
-                                <path d="M2 17L12 22L22 17"></path>
-                                <path d="M2 12L12 17L22 12"></path>
+                    <!-- Card B: Confidence (2col × 1row) -->
+                    <article class="bento-card bc-confidence" data-animate="fade-up" data-delay="80" role="listitem">
+                        <div class="bc-icon" aria-hidden="true">
+                            <!-- Shield-check for "Confidence" -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <polyline points="9 12 11 14 15 10"/>
                             </svg>
                         </div>
-                        <div class="bento-card-content">
-                            <h3>The Apriori Processing Engine</h3>
-                            <p>Our backend reads transaction sets and employs candidate itemset trimming. By trimming low-support items early (downward closure property), the engine eliminates exponential calculation overhead, scaling to massive transaction databases.</p>
+                        <div class="bc-tag">Confidence</div>
+                        <h3 class="bc-title">Purchase Probability</h3>
+                        <div class="bc-formula">Conf(A→B) = Supp(A∪B) / Supp(A)</div>
+                        <p class="bc-desc">If a shopper buys A, what's the probability they also buy B? Only rules above 60% confidence surface to checkout.</p>
+                        <div class="bc-bar-row">
+                            <div class="bc-bar-wrap">
+                                <div class="bc-bar-fill bc-bar-fill--green" style="width:71%" data-width="71"></div>
+                            </div>
+                            <span class="bc-bar-label">71% peak confidence</span>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Card 5: JSON API -->
-                    <div class="bento-card card-api">
-                        <div class="bento-icon api-icon-bg">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path>
+                    <!-- Card C: Lift (2col × 1row) -->
+                    <article class="bento-card bc-lift" data-animate="fade-up" data-delay="160" role="listitem">
+                        <div class="bc-icon" aria-hidden="true">
+                            <!-- Trending up for "Lift" -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                <polyline points="17 6 23 6 23 12"/>
                             </svg>
                         </div>
-                        <h3>JSON REST API</h3>
-                        <p>A simple, CORS-enabled POST endpoint accepting cart items and returning ranked recommendations with lift and support scores in sub-milliseconds.</p>
-                    </div>
+                        <div class="bc-tag">Lift</div>
+                        <h3 class="bc-title">Association Strength</h3>
+                        <div class="bc-formula">Lift(A→B) = Conf(A→B) / Supp(B)</div>
+                        <p class="bc-desc">Lift ≥ 1.2 means buying A genuinely boosts purchase of B — not random chance. Filters out spurious correlations.</p>
+                        <div class="bc-bar-row">
+                            <div class="bc-bar-wrap">
+                                <div class="bc-bar-fill bc-bar-fill--amber" style="width:83%" data-width="83"></div>
+                            </div>
+                            <span class="bc-bar-label">3.33× max lift</span>
+                        </div>
+                    </article>
 
-                    <!-- Card 6: Zero-Latency -->
-                    <div class="bento-card card-latency">
-                        <div class="bento-icon latency-icon-bg">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M13 2L3 14h9l-1 8 10-10h-9l1-8z"></path>
-                            </svg>
+                    <!-- Card D: Apriori Engine (4col × 1row) — WIDE -->
+                    <article class="bento-card bc-engine bc-span-4" data-animate="fade-up" data-delay="0" role="listitem">
+                        <div class="bc-engine-inner">
+                            <div class="bc-icon bc-icon--large" aria-hidden="true">
+                                <!-- CPU/processor for engine -->
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="4" y="4" width="16" height="16" rx="2"/>
+                                    <rect x="9" y="9" width="6" height="6"/>
+                                    <line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/>
+                                    <line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/>
+                                    <line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/>
+                                    <line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>
+                                </svg>
+                            </div>
+                            <div class="bc-engine-text">
+                                <div class="bc-tag">Apriori Engine</div>
+                                <h3 class="bc-title">Candidate Pruning at Scale</h3>
+                                <p class="bc-desc">The downward-closure property eliminates low-support supersets before they're even evaluated — trimming exponential search space to a tractable linear pass. Scales to 10M+ transaction databases without memory overflow.</p>
+                            </div>
                         </div>
-                        <h3>Zero-Latency Shimmers</h3>
-                        <p>The client UI displays instant shimmer loaders and smooth progress bar triggers, preventing cumulative layout shifts (CLS) on slow networks.</p>
-                    </div>
+                        <!-- Mini pipeline visual -->
+                        <div class="pipeline" aria-hidden="true">
+                            <div class="pipe-step"><span>Transactions</span></div>
+                            <div class="pipe-arrow">→</div>
+                            <div class="pipe-step pipe-step--active"><span>Frequent Itemsets</span></div>
+                            <div class="pipe-arrow">→</div>
+                            <div class="pipe-step"><span>Association Rules</span></div>
+                            <div class="pipe-arrow">→</div>
+                            <div class="pipe-step pipe-step--highlight"><span>Ranked Bundles</span></div>
+                        </div>
+                    </article>
 
-                    <!-- Card 7: O(1) Cache (2 cols wide) -->
-                    <div class="bento-card card-cache span-2">
-                        <div class="bento-icon cache-icon-bg">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l-7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    <!-- Card E: JSON API (2col × 1row) -->
+                    <article class="bento-card bc-api bc-span-2" data-animate="fade-up" data-delay="80" role="listitem">
+                        <div class="bc-icon" aria-hidden="true">
+                            <!-- Code brackets for API -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
                             </svg>
                         </div>
-                        <div class="bento-card-content">
-                            <h3>Pre-Calculated Rule Pickling</h3>
-                            <p>To avoid resource spikes, rules are calculated once and exported to <code>model.pkl</code>. The server loads this file directly on startup, achieving O(1) time complexity per checkout query without retraining overhead.</p>
+                        <div class="bc-tag">REST API</div>
+                        <h3 class="bc-title">One POST, Instant Bundles</h3>
+                        <p class="bc-desc">CORS-enabled endpoint accepts a cart array and returns ranked recommendations with confidence + lift scores. Works with any stack.</p>
+                        <div class="api-snippet">
+                            <span class="api-method">POST</span> <span class="api-path">/recommend</span>
                         </div>
-                    </div>
+                    </article>
+
+                    <!-- Card F: Latency (2col × 1row) -->
+                    <article class="bento-card bc-latency bc-span-2" data-animate="fade-up" data-delay="0" role="listitem">
+                        <div class="bc-icon" aria-hidden="true">
+                            <!-- Zap/lightning for latency -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                            </svg>
+                        </div>
+                        <div class="bc-tag">Sub-Millisecond</div>
+                        <h3 class="bc-title">Zero-CLS Shimmer UI</h3>
+                        <p class="bc-desc">Instant skeleton loaders prevent layout shift during network calls. Checkout conversion stays high even on 3G connections.</p>
+                        <div class="latency-badge">
+                            <span class="latency-dot"></span>
+                            <span class="latency-text">avg 0.4ms response</span>
+                        </div>
+                    </article>
+
+                    <!-- Card G: Cache Architecture (4col × 1row) — WIDE -->
+                    <article class="bento-card bc-cache bc-span-4" data-animate="fade-up" data-delay="80" role="listitem">
+                        <div class="bc-engine-inner">
+                            <div class="bc-icon bc-icon--large" aria-hidden="true">
+                                <!-- Database/storage for cache -->
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                                </svg>
+                            </div>
+                            <div class="bc-engine-text">
+                                <div class="bc-tag">Rule Pickling</div>
+                                <h3 class="bc-title">Train Once. Serve Forever.</h3>
+                                <p class="bc-desc">Rules are computed offline, serialized to <code>model.pkl</code>, and loaded at server boot. Every subsequent cart query executes as a pure dictionary lookup — O(1) time complexity, zero CPU spikes during flash sales or Black Friday surges.</p>
+                            </div>
+                        </div>
+                        <!-- Code snippet showing O(1) -->
+                        <div class="cache-code" aria-hidden="true">
+                            <div class="code-row"><span class="ck">recommendations</span> <span class="co">=</span> <span class="cv">rules_dict</span><span class="cx">[cart_item]</span></div>
+                            <div class="code-row"><span class="cr">→</span> <span class="cx">O(1) lookup · no retraining · no spikes</span></div>
+                        </div>
+                    </article>
+
                 </div>
             </div>
         </section>
 
-        <!-- Sandbox Recommendation Tool Section -->
-        <section class="tool-section" id="recommend-tool">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="eyebrow">Live Decision Sandbox</span>
-                    <h2 class="section-title">Query the Recommendation Engine</h2>
-                    <p class="section-description">Select a product currently in a customer's shopping cart and query our Flask API server in real-time.</p>
+        <!-- ═══════════════════════════════════════════
+             SANDBOX — Live Recommendation Engine
+        ═══════════════════════════════════════════ -->
+        <section class="sandbox-section" id="sandbox" aria-labelledby="sandbox-title">
+            <div class="section-wrap">
+                <div class="section-header" data-animate="fade-up">
+                    <span class="eyebrow">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+                        Interact with the live inference engine
+                    </span>
+                    <h2 class="section-title" id="sandbox-title">
+                        Query the Engine.<br><em>See the Rules Fire.</em>
+                    </h2>
+                    <p class="section-sub">Select a product from a customer's cart and watch the Apriori rules return statistically validated cross-sell recommendations in real time.</p>
                 </div>
-                
-                <div class="tool-layout">
-                    <!-- Form Input Block -->
-                    <div class="glass-card form-card">
-                        <div class="form-group">
-                            <label for="product-select" class="form-label">Active Cart Product:</label>
-                            <div class="select-wrapper">
-                                <select id="product-select" class="form-select">
-                                    <option value="" disabled selected>-- Select a Product --</option>
-                                    <optgroup label="Core Devices (Bundling Rules)">
-                                        <option value="Laptop">Laptop (Tech Bundle)</option>
-                                        <option value="Smartphone">Smartphone (Mobile Bundle)</option>
-                                        <option value="DSLR">DSLR Camera (Photo Bundle)</option>
+
+                <div class="sandbox-layout">
+                    <!-- Left: Controls -->
+                    <div class="sandbox-controls glass-card" data-animate="fade-up" data-delay="0">
+                        <div class="ctrl-group">
+                            <label for="product-select" class="ctrl-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                                Active cart product
+                            </label>
+                            <div class="select-wrap">
+                                <select id="product-select" class="ctrl-select">
+                                    <option value="" disabled selected>— Select a product —</option>
+                                    <optgroup label="Core Devices">
+                                        <option value="Laptop">Laptop</option>
+                                        <option value="Smartphone">Smartphone</option>
+                                        <option value="DSLR">DSLR Camera</option>
                                     </optgroup>
-                                    <optgroup label="Accessories & Items">
+                                    <optgroup label="Accessories">
                                         <option value="Mouse">Mouse</option>
                                         <option value="Laptop Bag">Laptop Bag</option>
                                         <option value="Keyboard">Keyboard</option>
@@ -303,7 +476,7 @@
                                         <option value="Tripod">Tripod</option>
                                         <option value="Camera Bag">Camera Bag</option>
                                     </optgroup>
-                                    <optgroup label="Other Catalog Products">
+                                    <optgroup label="Other Products">
                                         <option value="Monitor">Monitor</option>
                                         <option value="USB Hub">USB Hub</option>
                                         <option value="HDMI Cable">HDMI Cable</option>
@@ -321,283 +494,424 @@
                                         <option value="Webcam">Webcam</option>
                                     </optgroup>
                                 </select>
+                                <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                             </div>
                         </div>
 
-                        <button id="get-recommendations-btn" class="btn btn-primary btn-block">
-                            <span>Get Recommendations</span>
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
+                        <button id="get-recommendations-btn" class="btn btn-primary btn-full">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            Run Recommendations
                         </button>
-                        
-                        <!-- Connection Status -->
-                        <div class="api-status-box" id="api-status-box">
-                            <div class="status-indicator" id="status-indicator"></div>
-                            <span class="status-text" id="status-text">Backend Status: Connecting...</span>
+
+                        <!-- API Status -->
+                        <div class="api-status" id="api-status-box">
+                            <span class="api-dot" id="status-indicator"></span>
+                            <span class="api-label" id="status-text">Backend: Connecting...</span>
+                        </div>
+
+                        <!-- Thresholds display -->
+                        <div class="thresholds">
+                            <div class="thresh-row">
+                                <span class="thresh-label">Min Support</span>
+                                <span class="thresh-val">≥ 5%</span>
+                            </div>
+                            <div class="thresh-row">
+                                <span class="thresh-label">Min Confidence</span>
+                                <span class="thresh-val">≥ 60%</span>
+                            </div>
+                            <div class="thresh-row">
+                                <span class="thresh-label">Min Lift</span>
+                                <span class="thresh-val">≥ 1.2×</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Dynamic Results Container -->
-                    <div class="results-container" id="results-section">
-                        <!-- Idle State -->
-                        <div class="results-state state-idle" id="state-idle">
-                            <div class="state-icon">🛍️</div>
-                            <h3>Awaiting Sandbox Selection</h3>
-                            <p>Choose an item from the catalog dropdown list and execute recommendations to fetch mathematical co-purchase matches.</p>
+                    <!-- Right: Results -->
+                    <div class="sandbox-results" id="results-section">
+
+                        <!-- Idle -->
+                        <div class="result-state state-idle" id="state-idle">
+                            <div class="state-icon-wrap">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                            </div>
+                            <h3>Awaiting Product Selection</h3>
+                            <p>Pick any item from the dropdown to trigger the Apriori rule engine and surface high-confidence co-purchase bundles.</p>
                         </div>
 
-                        <!-- Loading Shimmer State -->
-                        <div class="results-state state-loading hidden" id="state-loading">
-                            <div class="shimmer-card"></div>
-                            <div class="shimmer-card"></div>
-                            <div class="shimmer-card"></div>
+                        <!-- Loading -->
+                        <div class="result-state state-loading hidden" id="state-loading" aria-live="polite" aria-label="Loading recommendations">
+                            <div class="shimmer-grid">
+                                <div class="shimmer-card"></div>
+                                <div class="shimmer-card"></div>
+                                <div class="shimmer-card"></div>
+                            </div>
                         </div>
 
-                        <!-- Error State -->
-                        <div class="results-state state-error hidden" id="state-error">
-                            <div class="state-icon error-icon">⚠️</div>
+                        <!-- Error -->
+                        <div class="result-state state-error hidden" id="state-error" aria-live="assertive">
+                            <div class="state-icon-wrap state-icon-error">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            </div>
                             <h3 id="error-title">Inference Request Failed</h3>
-                            <p id="error-message">Could not establish contact with the Flask API server. Please check your local server settings.</p>
+                            <p id="error-message">Could not reach the Flask API server. Ensure your local backend is running on the configured port.</p>
                         </div>
 
-                        <!-- Empty State -->
-                        <div class="results-state state-empty hidden" id="state-empty">
-                            <div class="state-icon empty-icon">🔍</div>
+                        <!-- Empty -->
+                        <div class="result-state state-empty hidden" id="state-empty">
+                            <div class="state-icon-wrap state-icon-empty">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            </div>
                             <h3>No Qualified Bundles</h3>
-                            <p>Our Apriori rules did not identify co-purchase items satisfying confidence &ge; 60% and lift &ge; 1.2 constraints.</p>
+                            <p>No rules met the confidence ≥ 60% and lift ≥ 1.2 thresholds for this product. Try a core device like Laptop or Smartphone.</p>
                         </div>
 
-                        <!-- Success State -->
-                        <div class="results-state state-success hidden" id="state-success">
-                            <div class="success-header">
-                                <h3>Frequently Bought With: <span class="highlight" id="queried-product-label">Laptop</span></h3>
-                                <span class="badge badge-success" id="results-count-badge">3 Bundles Found</span>
+                        <!-- Success -->
+                        <div class="result-state state-success hidden" id="state-success" aria-live="polite">
+                            <div class="success-head">
+                                <h3>Frequently Bought With: <span id="queried-product-label" class="queried-label"></span></h3>
+                                <span class="result-badge" id="results-count-badge"></span>
                             </div>
-                            
-                            <div class="recommendations-grid" id="recommendations-grid">
-                                <!-- Cards Injected Dynamically by script.js -->
+                            <div class="recs-grid" id="recommendations-grid">
+                                <!-- Injected by script.js -->
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Social Proof Section -->
-        <section class="testimonials-section" id="testimonials">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="eyebrow">Success Stories from the Checkout Line</span>
-                    <h2 class="section-title">Validated by Top Store Managers</h2>
-                    <p class="section-description">See how e-commerce operations achieve instant order value increases using our recommendation patterns.</p>
+        <!-- ═══════════════════════════════════════════
+             SOCIAL PROOF — Testimonials
+        ═══════════════════════════════════════════ -->
+        <section class="proof-section" id="proof" aria-labelledby="proof-title">
+            <div class="section-wrap">
+                <div class="section-header" data-animate="fade-up">
+                    <span class="eyebrow">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1l2.09 4.26L15 6.27l-3.5 3.41.83 4.83L8 12.2l-4.33 2.27.83-4.83L1 6.27l4.91-.71z"/></svg>
+                        Revenue validated at checkout
+                    </span>
+                    <h2 class="section-title" id="proof-title">
+                        Store Managers See<br><em>Results in Week One</em>
+                    </h2>
+                    <p class="section-sub">From integration to impact — real data from e-commerce operators who deployed the Apriori engine into production.</p>
                 </div>
-                
+
                 <div class="testimonials-grid">
-                    <!-- Testimonial 1 -->
-                    <div class="glass-card testimonial-card">
-                        <div class="stars-row">
-                            <!-- 5 SVG Stars -->
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <article class="tcard glass-card" data-animate="fade-up" data-delay="0">
+                        <div class="tcard-stars" aria-label="5 out of 5 stars">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                         </div>
-                        <p class="testimonial-text">"Integrating the Apriori API took under an hour. We immediately saw a 28% increase in laptop accessory cross-sells at our checkout phase."</p>
-                        <div class="testimonial-user">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" alt="Sarah Jenkins">
-                            <div class="user-details">
-                                <span class="user-name">Sarah Jenkins</span>
-                                <span class="user-title">E-commerce Director, TechVibe</span>
+                        <blockquote class="tcard-quote">"Integration took under an hour. Laptop accessory cross-sells jumped 28% in the first week — without touching our cart UI."</blockquote>
+                        <div class="tcard-attribution">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=88&h=88&q=80" alt="Sarah Jenkins" loading="lazy">
+                            <div>
+                                <strong>Sarah Jenkins</strong>
+                                <span>E-commerce Director, TechVibe</span>
                             </div>
                         </div>
-                    </div>
+                        <div class="tcard-metric">+28% cross-sell rate</div>
+                    </article>
 
-                    <!-- Testimonial 2 -->
-                    <div class="glass-card testimonial-card">
-                        <div class="stars-row">
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <article class="tcard glass-card" data-animate="fade-up" data-delay="100">
+                        <div class="tcard-stars" aria-label="5 out of 5 stars">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                         </div>
-                        <p class="testimonial-text">"The sub-millisecond response time is incredible. No sluggish UI loaders. Our checkout conversion rates remained high while basket sizes grew."</p>
-                        <div class="testimonial-user">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80" alt="David Chen">
-                            <div class="user-details">
-                                <span class="user-name">David Chen</span>
-                                <span class="user-title">Growth Lead, GadgetGlow</span>
+                        <blockquote class="tcard-quote">"Sub-millisecond responses mean no loading spinners at checkout. Basket sizes grew 31% while our checkout abandonment rate dropped."</blockquote>
+                        <div class="tcard-attribution">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=88&h=88&q=80" alt="David Chen" loading="lazy">
+                            <div>
+                                <strong>David Chen</strong>
+                                <span>Growth Lead, GadgetGlow</span>
                             </div>
                         </div>
-                    </div>
+                        <div class="tcard-metric">+31% basket size</div>
+                    </article>
 
-                    <!-- Testimonial 3 -->
-                    <div class="glass-card testimonial-card">
-                        <div class="stars-row">
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <article class="tcard glass-card" data-animate="fade-up" data-delay="200">
+                        <div class="tcard-stars" aria-label="5 out of 5 stars">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="star" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                         </div>
-                        <p class="testimonial-text">"Using cached pickling model states is a stroke of genius. Our servers show zero training overhead spikes even during heavy traffic sales events."</p>
-                        <div class="testimonial-user">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=80" alt="Elena Rostova">
-                            <div class="user-details">
-                                <span class="user-name">Elena Rostova</span>
-                                <span class="user-title">Operations Head, ClickStyle</span>
+                        <blockquote class="tcard-quote">"Cached pickling is genius. Our servers held zero training spikes during Black Friday — the entire recommendation layer was invisible to our infra team."</blockquote>
+                        <div class="tcard-attribution">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=88&h=88&q=80" alt="Elena Rostova" loading="lazy">
+                            <div>
+                                <strong>Elena Rostova</strong>
+                                <span>Operations Head, ClickStyle</span>
                             </div>
                         </div>
-                    </div>
+                        <div class="tcard-metric">0 infra incidents</div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Accordion Section -->
-        <section class="faq-section" id="faq">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="eyebrow">Algorithmic Clarifications</span>
-                    <h2 class="section-title">Frequently Asked Questions</h2>
-                    <p class="section-description">Clear technical answers detailing our Apriori model capabilities and implementation.</p>
+        <!-- ═══════════════════════════════════════════
+             FAQ ACCORDION
+        ═══════════════════════════════════════════ -->
+        <section class="faq-section" id="faq" aria-labelledby="faq-title">
+            <div class="section-wrap">
+                <div class="section-header" data-animate="fade-up">
+                    <span class="eyebrow">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 118 1a7 7 0 010 14zm0 1A8 8 0 108 0a8 8 0 000 16z"/><path d="M5.255 5.786a.237.237 0 00.241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 00.25.246h.811a.25.25 0 00.25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/></svg>
+                        Technical questions, honest answers
+                    </span>
+                    <h2 class="section-title" id="faq-title">Frequently Asked Questions</h2>
+                    <p class="section-sub">Everything you need to know before integrating SmartCart AI into your checkout workflow.</p>
                 </div>
-                
-                <div class="faq-accordion-wrapper">
-                    <!-- FAQ 1 -->
-                    <div class="faq-item">
-                        <button class="faq-trigger" aria-expanded="false">
-                            <span>How does the Apriori algorithm identify product associations?</span>
-                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+
+                <div class="faq-list" role="list">
+
+                    <div class="faq-item" role="listitem" data-animate="fade-up" data-delay="0">
+                        <button class="faq-trigger" aria-expanded="false" id="faq-trigger-1" aria-controls="faq-content-1">
+                            <span>How does Apriori identify product associations from transaction data?</span>
+                            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                         </button>
-                        <div class="faq-content">
-                            <div class="faq-content-inner">
-                                <p>Apriori works by scanning all transaction baskets to find frequent single items (support &ge; 5%), then iteratively builds pairs and triplets. It operates on the downward-closure principle: if an itemset is frequent, all of its subsets must also be frequent. Rules are filtered by lift (&ge; 1.2) to ensure a strong co-purchase relationship exists.</p>
+                        <div class="faq-body" id="faq-content-1" role="region" aria-labelledby="faq-trigger-1">
+                            <div class="faq-body-inner">
+                                <p>Apriori scans all transaction baskets to find frequent single items (support ≥ 5%), then iteratively builds pairs and triplets. The downward-closure principle ensures that if an itemset is infrequent, all of its supersets are discarded — trimming the search space exponentially. Final rules are filtered by lift ≥ 1.2 to confirm genuine co-purchase strength over random correlation.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ 2 -->
-                    <div class="faq-item">
-                        <button class="faq-trigger" aria-expanded="false">
-                            <span>What is the benefit of loading model.pkl instead of retraining?</span>
-                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    <div class="faq-item" role="listitem" data-animate="fade-up" data-delay="60">
+                        <button class="faq-trigger" aria-expanded="false" id="faq-trigger-2" aria-controls="faq-content-2">
+                            <span>Why load model.pkl instead of retraining on every request?</span>
+                            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                         </button>
-                        <div class="faq-content">
-                            <div class="faq-content-inner">
-                                <p>Training a machine learning model on large datasets can cause CPU spikes and add seconds of delay. By saving the generated rules offline to a serialized pickle file (<code>model.pkl</code>), our Flask backend can execute query lookups in O(1) time. This ensures sub-millisecond response rates during user checkouts.</p>
+                        <div class="faq-body" id="faq-content-2" role="region" aria-labelledby="faq-trigger-2">
+                            <div class="faq-body-inner">
+                                <p>Training Apriori on large datasets adds 2–15 seconds of CPU overhead per request. By pre-computing rules offline and serializing them to <code>model.pkl</code>, the Flask server loads the entire ruleset at boot. Each checkout query becomes a dictionary lookup — O(1) time complexity regardless of catalog size, with median response times under 0.4ms.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ 3 -->
-                    <div class="faq-item">
-                        <button class="faq-trigger" aria-expanded="false">
-                            <span>How can I customize the Support and Confidence thresholds?</span>
-                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    <div class="faq-item" role="listitem" data-animate="fade-up" data-delay="120">
+                        <button class="faq-trigger" aria-expanded="false" id="faq-trigger-3" aria-controls="faq-content-3">
+                            <span>Can I adjust the support, confidence, or lift thresholds?</span>
+                            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                         </button>
-                        <div class="faq-content">
-                            <div class="faq-content-inner">
-                                <p>You can modify these parameters inside <code>backend/train_model.py</code>. Adjust <code>min_support</code> in the apriori function call or change the confidence filter threshold in <code>backend/recommend.py</code>. Retrain the model using the CLI script to save the updated parameters to <code>model.pkl</code>.</p>
+                        <div class="faq-body" id="faq-content-3" role="region" aria-labelledby="faq-trigger-3">
+                            <div class="faq-body-inner">
+                                <p>Yes. Modify <code>min_support</code> in <code>backend/train_model.py</code> and the confidence/lift filters in <code>backend/recommend.py</code>. Re-run the CLI training script to regenerate <code>model.pkl</code> with your new parameters. Changes take effect on the next server restart with zero frontend code changes required.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ 4 -->
-                    <div class="faq-item">
-                        <button class="faq-trigger" aria-expanded="false">
-                            <span>How easy is it to integrate this API into our custom cart workflow?</span>
-                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    <div class="faq-item" role="listitem" data-animate="fade-up" data-delay="180">
+                        <button class="faq-trigger" aria-expanded="false" id="faq-trigger-4" aria-controls="faq-content-4">
+                            <span>How do I integrate the recommendation API into my cart page?</span>
+                            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                         </button>
-                        <div class="faq-content">
-                            <div class="faq-content-inner">
-                                <p>Extremely simple. The Flask server exposes a CORS-enabled endpoint at <code>POST /recommend</code> that accepts standard JSON payloads. You can query this endpoint using any backend language or client-side fetch script from your shopping cart page, and render the recommended products dynamically.</p>
+                        <div class="faq-body" id="faq-content-4" role="region" aria-labelledby="faq-trigger-4">
+                            <div class="faq-body-inner">
+                                <p>Send a <code>POST /recommend</code> request with a JSON body containing your cart items array. The CORS-enabled endpoint returns ranked recommendations with confidence and lift scores. Works with any frontend framework, backend language, or vanilla <code>fetch()</code> — no SDK required. Full integration typically takes under 60 minutes.</p>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Final CTA Section (Unified with Hero CTA) -->
-        <section class="final-cta-section">
-            <div class="final-cta-glow"></div>
-            <div class="section-container final-cta-container">
-                <span class="eyebrow">Maximize Your Order Value</span>
-                <h2 class="final-cta-title">Upgrade Your Cross-Selling System Today</h2>
-                <p class="final-cta-subtitle">Deploy our serverless Apriori recommendation module and watch your average shopping cart value grow.</p>
-                <a href="#recommend-tool" class="btn btn-primary" id="final-cta-btn">
-                    <span>Try Recommendation Sandbox</span>
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
+        <!-- ═══════════════════════════════════════════
+             FINAL CTA
+        ═══════════════════════════════════════════ -->
+        <section class="final-cta" aria-labelledby="cta-title">
+            <div class="cta-glow" aria-hidden="true"></div>
+            <div class="section-wrap cta-inner">
+                <span class="eyebrow" data-animate="fade-up">
+                    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 118 1a7 7 0 010 14zm0 1A8 8 0 108 0a8 8 0 000 16z"/><path d="M10.97 4.97a.235.235 0 00-.02.022L7.477 9.417 5.384 7.323a.75.75 0 00-1.06 1.06L6.97 11.03a.75.75 0 001.079-.02l3.992-4.99a.75.75 0 00-1.071-1.05z"/></svg>
+                    Start generating revenue this week
+                </span>
+                <h2 class="cta-title" id="cta-title" data-animate="fade-up">
+                    Deploy SmartCart AI.<br>Watch Your Cart Value <em>Climb.</em>
+                </h2>
+                <p class="cta-sub" data-animate="fade-up">Add 35% average order value with a single API call at checkout. No retraining. No vendor lock-in. Full source code included.</p>
+                <div class="cta-actions" data-animate="fade-up">
+                    <a href="#sandbox" class="btn btn-primary btn-large" id="final-cta-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Try the Sandbox Now
+                    </a>
+                    <a href="#how-it-works" class="btn btn-ghost" id="cta-secondary-btn">
+                        Read the docs
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
             </div>
         </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <span class="footer-logo">CrossSell<span class="logo-dot">AI</span></span>
-                <p class="footer-desc">High-conversion product recommendation systems using Market Basket Analysis, Flask Python API endpoints, and clean modern styling.</p>
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════ -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="#hero" class="nav-logo" aria-label="SmartCart AI">
+                    <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="9" cy="9" r="5" fill="url(#flgrad)" opacity="0.95"/>
+                        <circle cx="27" cy="9" r="5" fill="url(#flgrad)" opacity="0.65"/>
+                        <circle cx="27" cy="27" r="5" fill="url(#flgrad)" opacity="0.85"/>
+                        <circle cx="9" cy="27" r="5" fill="url(#flgrad)" opacity="0.5"/>
+                        <line x1="9" y1="14" x2="9" y2="22" stroke="url(#flgrad)" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="14" y1="9" x2="22" y2="9" stroke="url(#flgrad)" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="27" y1="14" x2="27" y2="22" stroke="url(#flgrad)" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="14" y1="27" x2="22" y2="27" stroke="url(#flgrad)" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="13" y1="13" x2="23" y2="23" stroke="url(#flgrad)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                        <defs>
+                            <linearGradient id="flgrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#4361EE"/>
+                                <stop offset="100%" stop-color="#00D4FF"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span class="logo-text">SmartCart<span class="logo-accent">AI</span></span>
+                </a>
+                <p class="footer-desc">Market Basket Analysis that earns money while your team sleeps. Powered by Apriori, served by Flask, deployed on Vercel.</p>
             </div>
-            
-            <div class="footer-right">
-                <span class="tech-stack-title">Tech Stack</span>
-                <div class="tech-tags">
-                    <span class="tech-tag">Python 3</span>
-                    <span class="tech-tag">Flask</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">Mlxtend</span>
-                    <span class="tech-tag">Vanilla JS</span>
-                    <span class="tech-tag">CSS3</span>
-                    <span class="tech-tag">Vercel</span>
+
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#sandbox">Live Sandbox</a>
+                    <a href="#faq">Documentation</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Tech Stack</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python 3</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Mlxtend</span>
+                        <span class="tech-tag">Vanilla JS</span>
+                        <span class="tech-tag">Vercel</span>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2026 CrossSell AI. All Rights Reserved. Built for conversion rate optimization.</p>
+            <p>© 2026 SmartCart AI. Built for conversion rate optimization.</p>
         </div>
     </footer>
 
-    <!-- Script Links -->
+    <!-- Scripts -->
     <script src="script.js"></script>
-    
-    <!-- Inline JS for FAQ Accordion functionality -->
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const faqItems = document.querySelectorAll('.faq-item');
-            
-            faqItems.forEach(item => {
-                const trigger = item.querySelector('.faq-trigger');
-                const content = item.querySelector('.faq-content');
-                
-                trigger.addEventListener('click', () => {
-                    const expanded = trigger.getAttribute('aria-expanded') === 'true';
-                    
-                    // Close all other FAQ items first for accordion effect
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item) {
-                            otherItem.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
-                            otherItem.querySelector('.faq-content').style.maxHeight = null;
-                        }
-                    });
-                    
-                    // Toggle current item
-                    trigger.setAttribute('aria-expanded', !expanded);
-                    if (!expanded) {
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                    } else {
-                        content.style.maxHeight = null;
-                    }
+    // ═══════════════════════════════════════════
+    // THEME TOGGLE
+    // ═══════════════════════════════════════════
+    (function() {
+        const btn = document.getElementById('theme-toggle-btn');
+        const body = document.body;
+        const stored = localStorage.getItem('csai-theme');
+        if (stored === 'light') body.classList.add('light-theme');
+
+        btn.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            localStorage.setItem('csai-theme', body.classList.contains('light-theme') ? 'light' : 'dark');
+        });
+    })();
+
+    // ═══════════════════════════════════════════
+    // FAQ ACCORDION
+    // ═══════════════════════════════════════════
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.faq-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const expanded = trigger.getAttribute('aria-expanded') === 'true';
+                // Close all
+                document.querySelectorAll('.faq-trigger').forEach(t => {
+                    t.setAttribute('aria-expanded', 'false');
+                    t.closest('.faq-item').querySelector('.faq-body').style.maxHeight = null;
                 });
+                // Open clicked if it was closed
+                if (!expanded) {
+                    trigger.setAttribute('aria-expanded', 'true');
+                    const body = trigger.closest('.faq-item').querySelector('.faq-body');
+                    body.style.maxHeight = body.scrollHeight + 'px';
+                }
             });
         });
+    });
+
+    // ═══════════════════════════════════════════
+    // SCROLL ANIMATIONS (Intersection Observer)
+    // ═══════════════════════════════════════════
+    document.addEventListener('DOMContentLoaded', () => {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const delay = el.dataset.delay || 0;
+                    setTimeout(() => {
+                        el.classList.add('is-visible');
+                        // Trigger count-up for stat numbers
+                        el.querySelectorAll('[data-count]').forEach(animateCount);
+                        // Animate progress bars
+                        el.querySelectorAll('.bc-bar-fill').forEach(bar => {
+                            const w = bar.dataset.width || bar.style.width;
+                            bar.style.width = '0';
+                            setTimeout(() => { bar.style.width = w + (w.toString().endsWith('%') ? '' : '%'); }, 200);
+                        });
+                    }, parseInt(delay));
+                    io.unobserve(el);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
+
+        // Also animate hero float cards on load
+        setTimeout(() => {
+            document.querySelectorAll('.float-card [data-count]').forEach(animateCount);
+        }, 800);
+
+        // Stat section
+        const statIo = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.stat-number[data-count]').forEach(animateCount);
+                    statIo.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.stats-grid').forEach(el => statIo.observe(el));
+    });
+
+    function animateCount(el) {
+        const target = parseFloat(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        const decimal = parseInt(el.dataset.decimal || 0);
+        const dur = 1800;
+        const start = performance.now();
+
+        function step(now) {
+            const p = Math.min((now - start) / dur, 1);
+            const ease = 1 - Math.pow(1 - p, 4);
+            const val = target * ease;
+            el.textContent = (decimal > 0 ? val.toFixed(decimal) : Math.floor(val)) + suffix;
+            if (p < 1) requestAnimationFrame(step);
+            else el.textContent = (decimal > 0 ? target.toFixed(decimal) : target) + suffix;
+        }
+        requestAnimationFrame(step);
+    }
     </script>
 </body>
 </html>

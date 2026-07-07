@@ -1,6 +1,6 @@
-# CrossSell AI - Market Basket Analysis & Product Recommendation Engine
+# SmartCart AI - Market Basket Analysis & Product Recommendation Engine
 
-CrossSell AI is a production-ready, E-commerce Cross-Selling Recommendation System that leverages Market Basket Analysis (MBA) and the **Apriori Algorithm** to predict and suggest products that are frequently bought together. It includes a Python ML backend, a Flask REST API, and a modern, responsive frontend built with glassmorphic HTML, CSS, and Vanilla JavaScript.
+SmartCart AI is a production-ready, E-commerce Cross-Selling Recommendation System that leverages Market Basket Analysis (MBA) and the **Apriori Algorithm** to predict and suggest products that are frequently bought together. It includes a Python ML backend, a Flask REST API, and a modern, responsive frontend built with glassmorphic HTML, CSS, and Vanilla JavaScript.
 
 ---
 
@@ -34,7 +34,7 @@ CrossSell AI is a production-ready, E-commerce Cross-Selling Recommendation Syst
 ## 📂 Folder Structure
 
 ```
-crosssell-ai/
+smartcart-ai/
 ├── backend/
 │   ├── generate_data.py   # Synthesizes 500 transaction samples with conditional bundling
 │   ├── train_model.py     # Generates association rules and exports to model.pkl
@@ -136,7 +136,7 @@ Verify backend server status and model loading state.
     ```json
     {
       "dataset_exists": true,
-      "message": "Cross-Sell AI API is running.",
+      "message": "SmartCart AI API is running.",
       "model_loaded": true,
       "status": "healthy"
     }
@@ -203,7 +203,7 @@ This project is pre-configured to be deployed directly to Vercel. Vercel automat
 
 ## 📄 Resume-Ready Project Description
 
-**CrossSell AI — E-commerce Cross-Selling Recommendation System (ML / Full-Stack)**
+**SmartCart AI — E-commerce Cross-Selling Recommendation System (ML / Full-Stack)**
 *   **Core Engineering**: Designed and built an end-to-end recommendation engine mapping transaction sets with the **Apriori Algorithm** to surface cross-category items, saving pre-calculated association rules as pickled artifacts (`model.pkl`) to achieve **O(1) inference time** on API queries.
 *   **Algorithms & Logic**: Analyzed multi-product transactions to extract rules meeting minimum Support ($\ge 0.05$) and Lift ($\ge 1.2$) thresholds, ranking outputs dynamically using a multi-variable sort hierarchy (Lift $\rightarrow$ Confidence $\rightarrow$ Support).
 *   **API & Serverless Architecture**: Developed a Flask REST API with robust CORS configurations, modular input sanitization, and structured health diagnostic routes, fully optimized for serverless Python runtimes on Vercel.

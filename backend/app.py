@@ -59,7 +59,7 @@ def health():
     model_loaded = rules_df is not None
     return jsonify({
         "status": "healthy" if model_loaded else "degraded",
-        "message": "Cross-Sell AI API is running.",
+        "message": "SmartCart AI API is running.",
         "model_loaded": model_loaded,
         "dataset_exists": os.path.exists(os.path.join(current_dir, "transactions.csv"))
     }), 200
