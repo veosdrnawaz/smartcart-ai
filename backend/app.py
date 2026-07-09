@@ -16,7 +16,13 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Global rules DataFrame reference
 rules_df = None
-model_path = os.path.join(current_dir, "model.pkl")
+
+# Model path resolution: check root models/ directory first, then local fallback
+root_model_path = os.path.join(os.path.dirname(current_dir), "models", "model.pkl")
+if os.path.exists(root_model_path):
+    model_path = root_model_path
+else:
+    model_path = os.path.join(current_dir, "model.pkl")
 
 # Helper list of valid products to check for invalid products
 VALID_PRODUCTS = {
@@ -57,11 +63,13 @@ def health():
     Also returns status of model file availability.
     """
     model_loaded = rules_df is not None
+    root_csv_path = os.path.join(os.path.dirname(current_dir), "data", "transactions.csv")
+    dataset_exists = os.path.exists(root_csv_path) or os.path.exists(os.path.join(current_dir, "transactions.csv"))
     return jsonify({
         "status": "healthy" if model_loaded else "degraded",
         "message": "SmartCart AI API is running.",
         "model_loaded": model_loaded,
-        "dataset_exists": os.path.exists(os.path.join(current_dir, "transactions.csv"))
+        "dataset_exists": dataset_exists
     }), 200
 
 @app.route('/recommend', methods=['POST'])
